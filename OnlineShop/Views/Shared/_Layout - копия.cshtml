@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <title>Интернет-магазин</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+
+        <!-- Оффлайновая версия. Имеет некоторые артефакты рамок -->
+        <!-- Sencha framework 4.2.0 offline version from Cartracker
+        <script src="ext/ext-dev.js"></script>
+        <script src="app.js"></script>
+        <link rel="stylesheet" href="ext/packages/ext-theme-neptune/build/resources/ext-theme-neptune-all.css">-->
+
+        <!--<link rel="stylesheet" href="bootstrap.css">-->
+        <!--<link rel="stylesheet" href="resources/css/style.css">-->
+        <!--<script src="bootstrap.js"></script>-->
+
+
+        <!-- Основная версия, на которой велась разработка -->
+        <!-- Sencha framework 
+        <script src="http://cdn.sencha.com/ext/gpl/4.2.1/ext-all.js"></script>
+        <script src="http://cdn.sencha.com/ext/gpl/4.2.1/ext-theme-neptune.js"></script>
+        <link rel="stylesheet" href="http://cdn.sencha.com/ext/gpl/4.2.1/packages/ext-theme-neptune/build/resources/ext-theme-neptune-all.css">
+        <script type="text/javascript" src="app.js"></script>
+        <link rel="stylesheet" href="style.css">-->
+
+        <!-- Оффлайн версия. Отсутствует иконка загрузки -->
+        <!-- Sencha framework offline version 
+        <script src="offline/ext-all.js"></script>
+        <script src="offline/ext-theme-neptune.js"></script>
+        <link rel="stylesheet" href="offline/ext-theme-neptune-all.css">
+        <script type="text/javascript" src="app.js"></script> -->
+
+        <!-- Стили не Neptune -->
+        <!-- Another style
+        <link href="http://cdn.sencha.com/ext/gpl/4.2.0/resources/css/ext-all.css" rel="stylesheet" />
+        <script src="http://cdn.sencha.com/ext/gpl/4.2.0/ext-all.js"></script>
+        <script type="text/javascript" src="app.js"></script>-->
+
+        <!--<link rel="stylesheet" href="extjs/ext-all.css">
+        <script type="text/javascript" src="extjs/ext-all.js"></script>
+        <script type="text/javascript" src="app.js"></script>-->
+
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Styles.Render("~/Content/themes/base/css")
+    </head>
+    <body>
+
+        @Html.AntiForgeryToken()
+
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("ваша эмблема здесь", "Index", "Home")</p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
+                            <li>@Html.ActionLink("О программе", "About", "Home")</li>
+                            <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year — приложение ASP.NET MVC</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
